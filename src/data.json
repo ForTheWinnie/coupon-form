@@ -1,0 +1,13 @@
+{
+    "merchant": [
+        {
+            "id": "1",
+            "logo": "./img/logo1.png", 
+            "alt": "Green arrows forming a triangle with company slogan",
+            "couponStore": "DubK's Store", 
+            "couponDesc": "Free shipping on any order",
+            "couponCode": "FREESHIP",
+            "couponExpDate": "07/31/2020"
+        }
+    ]
+}
