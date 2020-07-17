@@ -3,8 +3,8 @@ import { render, screen } from '@testing-library/react';
 import ReactDOM from 'react-dom';
 import App from './App';
 
-describe('App', () => {
-  test('Button label exists', () => {
+
+  it('Button label exists', () => {
     render(<App />);
     
     screen.debug(); // allows you to verify output of App component in terminal
@@ -36,7 +36,7 @@ describe('App', () => {
 
 
 
-});
+
 
 it('App renders without crashing', () => {
   const div = document.createElement('div')
