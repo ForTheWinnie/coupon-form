@@ -1,7 +1,7 @@
-import { Formik, useField, Form } from 'formik'; // used Formik for its lightweight & scalability
+//import { Formik, useField, Form } from 'formik'; 
 import React from 'react';
-import { CouponColumn, FormColumn } from './Styles';
-import * as Yup from 'yup'; // used Yup for validation
+import { CouponColumn } from './Styles';
+import SubscriptionForm from './components/form/form';
 import { Button, Modal, Container, Row, Col } from 'react-bootstrap';
 import { CopyToClipboard } from 'react-copy-to-clipboard'; // copy text to clipboard (could also use navigator.clipboard, but this is not supported across all browsers)
 import data from './data.json'; // placeholder json data for testing
@@ -9,23 +9,6 @@ import data from './data.json'; // placeholder json data for testing
 // import './App.css';
 
 const couponDetails = data.merchant;
-
-// for email input field
-const EmailInput = ({ label, ...props }) => {
-  const [field, meta] = useField(props);
-
-  // return component & display error if there's an error
-  return(
-    <>
-    <label htmlFor={props.id || props.name}>{label}</label>
-    <input className="text-input" {...field} {...props} /> 
-    
-    {meta.touched && meta.error ? (
-      <div className="error">{meta.error}</div>
-    ):null}
-    </>
-  )
-}
 
 // modal component
 class App extends React.Component {
@@ -89,31 +72,7 @@ class App extends React.Component {
                 <ul>
                   <li>Be the first to receive weekly offers</li>
                   <li>Keep making an impact to help other non-profits</li></ul>
-                <FormColumn>
-                  <Formik initialValues={{email:''}} validationSchema={Yup.object({
-                    email: Yup.string()
-                      .email('Email format should be abc@domain.com')
-                      .max(50, 'Must be 50 chars or less')
-                      .required('This field is required')
-                  })}
-                  onSubmit={(values, { setSubmitting, resetForm }) => {
-                    setTimeout(() => {
-                      alert(JSON.stringify(values, null, 1));
-                      resetForm();
-                      setSubmitting(false);
-                    }, 1000);
-                  }}
-                  >
-                    {props => (
-                      <Form className="newsletterForm">
-                        <EmailInput label="Email" name="email" type="email" placeholder="abc@email.com"></EmailInput>
-                        <button type="submit">{props.isSubmitting ? 'Joining...' : 'Join the Movement'}</button>
-                        <p className="footnote">We won't spam you. Unsubscribe at anytime.</p>
-                      </Form>
-                    )}
-                  </Formik>
-                </FormColumn>
-                
+                  <SubscriptionForm></SubscriptionForm>
               </Col>
             </Row>
             </Container>
