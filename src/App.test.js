@@ -1,10 +1,10 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-//import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom';
 import App from './App';
 
 describe('App', () => {
-  test('renders App component', () => {
+  test('Button label exists', () => {
     render(<App />);
     
     screen.debug(); // allows you to verify output of App component in terminal
@@ -37,6 +37,11 @@ describe('App', () => {
 
 
 });
+
+it('App renders without crashing', () => {
+  const div = document.createElement('div')
+  ReactDOM.render(<App />, div)
+})
 
 describe('Addition', () => {
   it('knows that 2 and 2 make 4', () => {
