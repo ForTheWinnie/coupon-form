@@ -10,9 +10,8 @@ import data from './data.json'; // placeholder json data for testing
 
 const couponDetails = data.merchant;
 
-// modal component
+// modal component (modal does not show by default)
 class App extends React.Component {
-  // modal does not show by default 
   constructor () {
     super()
     this.state={ show:false }
