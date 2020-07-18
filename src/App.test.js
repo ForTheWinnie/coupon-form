@@ -1,51 +1,33 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect'
 import ReactDOM from 'react-dom';
 import App from './App';
-
-
-  it('Button label exists', () => {
-    render(<App />);
-    
-    screen.debug(); // allows you to verify output of App component in terminal
-    screen.getByText('See Coupon Details!');
-    
-    // verify that button text appears
-    expect(screen.getByText('See Coupon Details!')).toBeInTheDocument();
-  });
-
-  // test('modal shows the children and a close button', () => {
-  //   // Arrange
-  //   const handleHide = jest.fn()
-  
-  //   // Act
-  //   const { getByText } = render(
-  //     <Modal onHide={handleHide}>
-  //       <div>test</div>
-  //     </Modal>
-  //   )
-  //   // Assert
-  //   expect(getByText('test')).toBeTruthy()
-  
-  //   // Act
-  //   fireEvent.click(getByText(/close/i))
-  
-  //   // Assert
-  //   expect(handleHide).toHaveBeenCalledTimes(1)
-  // })
-
-
-
-
+import Enzyme, {mount} from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+Enzyme.configure({ adapter: new Adapter() });
 
 it('App renders without crashing', () => {
   const div = document.createElement('div')
   ReactDOM.render(<App />, div)
-})
-
-describe('Addition', () => {
-  it('knows that 2 and 2 make 4', () => {
-    expect(2 + 2).toBe(4);
-  });
 });
+
+it('renders correctly via RTL, button label exists, modal does not show by default', () => {
+  render(<App />);
+  const modalContent = screen.queryByText('Love Shopping Kind?');
+  screen.debug(); // verify output of App component in terminal
+  screen.getByText('See Coupon Details!');
+  
+  // verify that button text appears & modal is not shown
+  expect(modalContent).not.toBeInTheDocument();
+  expect(screen.getByText('See Coupon Details!')).toBeInTheDocument();
+});
+
+it('modal content appears after button click', () => {
+  const wrapper = mount(<App />);
+  wrapper.find('button').simulate('click');
+  const modalContent = screen.getByText('Love Shopping Kind?');
+  expect(modalContent).toBeInTheDocument();
+});
+
 
