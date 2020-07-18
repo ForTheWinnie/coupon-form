@@ -30,29 +30,33 @@ function SubscriptionForm () {
                 .required('This field is required')
             })}
             // POST to fake API
-            onSubmit={(values, { setSubmitting, resetForm, setStatus }) => {
-            fetch('https://jsonplaceholder.typicode.com/posts', {
-                method: 'POST',
-                headers: { "Content-type": "application/json" },
-                body: JSON.stringify({
-                    email: values.email
+            onSubmit={(values, { setSubmitting, resetForm }) => {
+                fetch('https://jsonplaceholder.typicode.com/posts', {
+                    method: 'POST',
+                    headers: { "Content-type": "application/json" },
+                    body: JSON.stringify({
+                        email: values.email
+                    }), 
+                    retries: 2,  // retry upon failure up to 2 times
+                    retryDelay: 10000 // throttle each retry (1sec)
                 })
-            })
-            .then(response => response.json())
-            .then(json => {
-                console.log(json); // verify json (email) in console
-                const status = "200"; // in real situation, would check if (Response.status == "200")
-                if (status === "200") {
-                    //setSubmitting(true);  (this would be uncomment out in production)
-                    setSubmitting(false); // this would be deleted in production
-                    console.log("success");
-                }
-            }) 
-            .catch(error => {
-                console.error('Error:', error);
-                setSubmitting(false);
-            });
-            resetForm();
+                .then(response => response.json())
+                .then(json => {
+                    console.log(json); // verify json (email) in console
+                    // in real situation, would check if (Response.status == "200")
+                    const status = "200"; 
+                    if (status === "200") {
+                        setSubmitting(false); // this would be deleted in production
+                        console.log("success");
+                    }
+                }) 
+                .catch(error => {
+                    console.error('Error:', error);
+                    setSubmitting(false);
+                })
+                .finally(() => {
+                    resetForm();
+                });
             }}>
                 
             {props => (
