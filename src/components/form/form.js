@@ -3,7 +3,6 @@ import { Form, useField, Formik } from 'formik'; // used Formik for its lightwei
 import { FormColumn } from '../../Styles';
 import * as Yup from 'yup'; // used Yup for validation
 
-// elements for email input field
 const EmailInput = ({ label, ...props }) => {
     const [field, meta] = useField(props);
   
@@ -20,7 +19,8 @@ const EmailInput = ({ label, ...props }) => {
     )
   }
 
-function SubscriptionForm () {
+class SubscriptionForm extends React.Component {
+    render () {
     return (
         <FormColumn>
             <Formik initialValues={{email:''}} validationSchema={Yup.object({
@@ -70,5 +70,6 @@ function SubscriptionForm () {
         </FormColumn>
     )
 }
+};
 
 export default SubscriptionForm;
