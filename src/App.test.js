@@ -1,11 +1,14 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, cleanup } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect'
 import ReactDOM from 'react-dom';
 import App from './App';
 import Enzyme, {mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 Enzyme.configure({ adapter: new Adapter() });
+
+// unmount or cleanup after every test
+afterEach(cleanup); 
 
 it('App renders without crashing', () => {
   const div = document.createElement('div')
