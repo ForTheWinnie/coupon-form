@@ -26,7 +26,7 @@ function SubscriptionForm () {
             <Formik initialValues={{email:''}} validationSchema={Yup.object({
             email: Yup.string()
                 .email('Email format should be abc@domain.com')
-                .max(50, 'Must be 50 chars or less')
+                .max(20, 'Must be 20 chars or less')
                 .required('This field is required')
             })}
             // POST to fake API
