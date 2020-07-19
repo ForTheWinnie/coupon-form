@@ -14,6 +14,7 @@ button {
     }
     span.copied {
         color: #6ecb95;
+        font-weight: 500;
     }
 }
 p:last-of-type {
