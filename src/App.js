@@ -5,8 +5,6 @@ import SubscriptionForm from './components/form/form';
 import { Button, Modal, Container, Row, Col } from 'react-bootstrap';
 import { CopyToClipboard } from 'react-copy-to-clipboard'; // copy text to clipboard (could also use navigator.clipboard, but this is not supported across all browsers)
 import data from './data.json'; // placeholder json data for testing
-//import logo from './logo.svg';
-// import './App.css';
 
 const couponDetails = data.merchant;
 
@@ -25,20 +23,15 @@ class App extends React.Component {
   onChange = ({target: {value}}) => {
     this.setState({value, copied: false});
   };
-  // onClick = ({target: {button}}) => {
-  //   console.log(`Clicked on "${button}"!`); // eslint-disable-line
-  // };
   onCopy = () => {
     this.setState({copied: true});
   };
 
+  // Button to open modal (landing page) & Modal w/ 2 columns
   render() {
     return (
-      // Button to open modal, Modal, Subscription form !!!!!!!!===============
       <div>
         <Button onClick={()=>{this.handleModal()}}>See Coupon Details!</Button>
-      
-        
 
         <Modal show={this.state.show} onHide={()=>{this.handleModal()}}>
           <Modal.Header closeButton><h1>Thank you for making a difference!</h1></Modal.Header>
@@ -81,6 +74,5 @@ class App extends React.Component {
     );
   }
 }
-
 
 export default App;
