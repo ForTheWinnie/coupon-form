@@ -27,12 +27,17 @@ ul {
 li {
   list-style-image: url('/img/checkmark.jpg');
   margin-bottom: 10px;
+  line-height: 1.2em;
 }
 .modal-content {
   text-align: center;
 }
 .modal-header {
   font-size: 1.7rem;
+}
+.colForm img, .colCoupon img {
+  height: auto;
+  width: 100px;
 }
 @media (min-width: 576px) {
   .modal-dialog {
