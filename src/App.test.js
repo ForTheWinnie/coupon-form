@@ -21,7 +21,7 @@ it('renders correctly via RTL, button label exists, modal does not show by defau
   screen.debug(); // verify output of App component in terminal
   screen.getByText('See Coupon Details!');
   
-  // verify that button text appears & modal is not shown
+  // verify that button text appears & modal is not shown by default
   expect(modalContent).not.toBeInTheDocument();
   expect(screen.getByText('See Coupon Details!')).toBeInTheDocument();
 });
