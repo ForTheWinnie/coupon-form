@@ -62,7 +62,7 @@ function SubscriptionForm () {
             {props => (
                 <Form className="newsletterForm">
                 <EmailInput label="Email" name="email" type="email" placeholder="abc@email.com" data-testid="test-input"></EmailInput>
-                <button type="submit">{props.isSubmitting ? 'Joining...' : 'Join the Movement'}</button>
+                <button type="submit" data-testid="test-button">{props.isSubmitting ? 'Joining...' : 'Join the Movement'}</button>
                 <p className="footnote">We won't spam you. Unsubscribe at anytime.</p>
                 </Form>
             )}
