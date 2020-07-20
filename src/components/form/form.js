@@ -17,7 +17,7 @@ const EmailInput = ({ label, ...props }) => {
       ):null}
       </>
     )
-  }
+}
 
 class SubscriptionForm extends React.Component {
     render () {
@@ -69,7 +69,7 @@ class SubscriptionForm extends React.Component {
             </Formik>
         </FormColumn>
     )
-}
+    }
 };
 
 export default SubscriptionForm;
