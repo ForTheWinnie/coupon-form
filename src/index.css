@@ -16,9 +16,16 @@ h2 {
   font-weight: 500;
   margin-top: 10px;
 }
-.btn-primary {
+.btn-primary, .btn-primary:visited, .btn-primary:focus, .btn-primary.focus {
   margin: 100px 100px;
   font-weight: 500;
+  background-color: #ee6762;
+  border: none;
+  outline: 0;
+}
+.btn-primary:hover, .btn-primary:link, .btn-primary:active {
+  background-color: #d2322d;
+  outline: 0;
 }
 ul {
   text-align: left;
