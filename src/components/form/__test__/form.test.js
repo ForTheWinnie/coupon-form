@@ -4,11 +4,9 @@ import SubscriptionForm from './../form';
 import { render, fireEvent, wait, cleanup, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 
-// unmount or cleanup after every test
 afterEach(cleanup); 
 
-// unit tests to verify form renders
-describe('testing subscription form', () => {
+describe('subscription form renders', () => {
     it("form component renders without crashing", () => {
         const div = document.createElement("div");
         ReactDOM.render(<SubscriptionForm></SubscriptionForm>, div);
@@ -19,7 +17,6 @@ describe('testing subscription form', () => {
     });
 });
 
-// unit tests for form validation
 describe('testing subscription form validation', () => {
     let handleChange;
     let input;
@@ -48,12 +45,12 @@ describe('testing subscription form validation', () => {
     it('form not submitted if email format is not valid', async () => {
         fireEvent.change(input, { target: { value: 'testInvalidEmail' } }); 
         await wait(() => {
-            const formButtonText = screen.getByText('Join the', { exact: false });
+            const formButtonText = screen.getByText('Join the Movement');
             expect(formButtonText).toBeInTheDocument();
         }); 
     });
     
-    it('error (This field is required) appears if email is blank', async () => {
+    it('error appears if email is blank', async () => {
         fireEvent.change(input, { target: { value: '' } }); 
         fireEvent.click(button);
         await wait(() => {
