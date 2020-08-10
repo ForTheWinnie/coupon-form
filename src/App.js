@@ -30,7 +30,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Button onClick={()=>{this.handleModal()}}>See Coupon Details!</Button>
+        <Button className="firstButton" onClick={()=>{this.handleModal()}}>See Coupon Details!</Button>
 
         <Modal show={this.state.show} onHide={()=>{this.handleModal()}}>
           <Modal.Header closeButton><h1>Thank you for making a difference!</h1></Modal.Header>
