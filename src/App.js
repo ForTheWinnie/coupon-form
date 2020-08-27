@@ -1,6 +1,6 @@
 import React from 'react';
 import { CouponColumn } from './Styles';
-import SubscriptionForm from './components/form/form';
+import SubscriptionForm from './components/Form/Form';
 import { Button, Modal, Container, Row, Col } from 'react-bootstrap';
 import { CopyToClipboard } from 'react-copy-to-clipboard'; // copy text to clipboard (could also use navigator.clipboard, but this is not supported across all browsers)
 import data from './data.json'; // placeholder json data for testing

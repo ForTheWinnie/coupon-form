@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import SubscriptionForm from './../form';
+import SubscriptionForm from './../Form';
 import { render, fireEvent, wait, cleanup, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 
